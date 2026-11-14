@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 100" width="110" height="100">
+  <!-- Bitzeps-Logo: Bizeps aus verbundenen Knoten (Netz). Eigenes Werk, keine fremden Quellen. -->
+  <g transform="translate(4,2)">
+    <path fill="#e6f4f6" d="M17,18 C17,8 25,2 35,3 L42,4 C51,5 53,14 51,22 C50,27 47,29 45,31 L45,42 C45,51 47,56 51,56 C55,41 70,34 80,43 C84,47 88,53 97,55 L97,90 L40,90 C26,90 18,82 18,70 L20,32 C17,28 16,23 17,18 Z"/>
+    <g stroke="#1aa6b7" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="14" x2="36" y2="3"/>
+      <line x1="36" y1="3" x2="51" y2="18"/>
+      <line x1="51" y1="18" x2="45" y2="36"/>
+      <line x1="45" y1="36" x2="50" y2="56"/>
+      <line x1="50" y1="56" x2="62" y2="42"/>
+      <line x1="62" y1="42" x2="78" y2="42"/>
+      <line x1="78" y1="42" x2="96" y2="56"/>
+      <line x1="96" y1="56" x2="96" y2="90"/>
+      <line x1="96" y1="90" x2="68" y2="90"/>
+      <line x1="68" y1="90" x2="40" y2="90"/>
+      <line x1="40" y1="90" x2="20" y2="74"/>
+      <line x1="20" y1="74" x2="20" y2="46"/>
+      <line x1="20" y1="46" x2="18" y2="14"/>
+      <line x1="18" y1="14" x2="32" y2="28"/>
+      <line x1="51" y1="18" x2="32" y2="28"/>
+      <line x1="32" y1="28" x2="45" y2="36"/>
+      <line x1="32" y1="28" x2="20" y2="46"/>
+      <line x1="20" y1="46" x2="32" y2="62"/>
+      <line x1="45" y1="36" x2="32" y2="62"/>
+      <line x1="32" y1="62" x2="20" y2="74"/>
+      <line x1="32" y1="62" x2="40" y2="90"/>
+      <line x1="50" y1="56" x2="32" y2="62"/>
+      <line x1="50" y1="56" x2="60" y2="72"/>
+      <line x1="62" y1="42" x2="60" y2="72"/>
+      <line x1="60" y1="72" x2="68" y2="90"/>
+      <line x1="60" y1="72" x2="40" y2="90"/>
+      <line x1="78" y1="42" x2="82" y2="70"/>
+      <line x1="60" y1="72" x2="82" y2="70"/>
+      <line x1="82" y1="70" x2="96" y2="56"/>
+      <line x1="82" y1="70" x2="96" y2="90"/>
+      <line x1="82" y1="70" x2="68" y2="90"/>
+    </g>
+    <g stroke="#fff" stroke-width="1.5">
+      <circle cx="18" cy="14" r="5" fill="#f2a33a"/>
+      <circle cx="36" cy="3" r="5" fill="#f2a33a"/>
+      <circle cx="51" cy="18" r="5" fill="#f2a33a"/>
+      <circle cx="45" cy="36" r="5" fill="#f2a33a"/>
+      <circle cx="50" cy="56" r="5" fill="#f2a33a"/>
+      <circle cx="62" cy="42" r="5" fill="#f2a33a"/>
+      <circle cx="78" cy="42" r="5" fill="#f2a33a"/>
+      <circle cx="96" cy="56" r="5" fill="#f2a33a"/>
+      <circle cx="96" cy="90" r="5" fill="#f2a33a"/>
+      <circle cx="68" cy="90" r="5" fill="#f2a33a"/>
+      <circle cx="40" cy="90" r="5" fill="#f2a33a"/>
+      <circle cx="20" cy="74" r="5" fill="#f2a33a"/>
+      <circle cx="20" cy="46" r="5" fill="#f2a33a"/>
+      <circle cx="32" cy="28" r="3.5" fill="#1f4e8c"/>
+      <circle cx="32" cy="62" r="3.5" fill="#1f4e8c"/>
+      <circle cx="60" cy="72" r="3.5" fill="#1f4e8c"/>
+      <circle cx="82" cy="70" r="3.5" fill="#1f4e8c"/>
+    </g>
+  </g>
+</svg>

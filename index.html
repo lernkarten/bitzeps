@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Bitzeps – Grips fürs Netz</title>
+  <link rel="icon" href="bilder/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="bilder/logo-180.png">
+  <link rel="stylesheet" href="engine/styles.css">
+</head>
+<body>
+  <div id="dev-banner" class="dev-banner" role="alert" hidden></div>
+  <header id="kopf" class="kopf" hidden></header>
+  <main id="app">
+    <noscript>Bitte JavaScript einschalten, damit die Übungen funktionieren.</noscript>
+  </main>
+
+  <!-- 1. Engine-Grundgerüst (immer zuerst) -->
+  <script src="engine/core.js"></script>
+  <script src="engine/session.js"></script>
+  <script src="engine/validate.js"></script>
+  <script src="engine/renderers/info.js"></script>
+  <script src="engine/renderers/multiple-choice.js"></script>
+  <script src="engine/renderers/wahr-falsch.js"></script>
+  <script src="engine/renderers/eintippen.js"></script>
+  <script src="engine/renderers/zuordnen.js"></script>
+  <script src="engine/renderers/ja-nein.js"></script>
+  <script src="engine/renderers/quiz.js"></script>
+  <script src="engine/renderers/freies-html.js"></script>
+
+  <!-- 2. Module und Blätter: für ein neues Blatt einfach eine Zeile ergänzen -->
+  <script src="blaetter/module.js"></script>
+  <script src="blaetter/12-i-fremde-menschen.js"></script>
+  <script src="blaetter/12-ii-menschen-die-ich-kenne.js"></script>
+  <script src="blaetter/12-iii-gruppenfotos.js"></script>
+  <script src="blaetter/12-iv-auf-dem-jahrmarkt.js"></script>
+  <script src="blaetter/12-v-auf-der-buehne.js"></script>
+
+  <!-- 3. Start der App (immer zuletzt) -->
+  <script src="engine/app.js"></script>
+</body>
+</html>

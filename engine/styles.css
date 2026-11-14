@@ -1,0 +1,759 @@
+/* Bitzeps – Gestaltung. Tablet-first, große Touch-Flächen, ruhig, WCAG-AA-Kontraste. */
+
+:root {
+  color-scheme: light;
+
+  --hintergrund: #f5f2ea;
+  --flaeche: #ffffff;
+  --text: #1f2933;
+  --text-leise: #52606d;
+  --rand: #d9d3c4;
+
+  --primaer: #1f5f9e;          /* Kontrast zu Weiß ≈ 6.6:1 */
+  --primaer-dunkel: #174a7c;
+  --primaer-hell: #e3eef9;
+
+  --richtig: #1b6b3a;
+  --richtig-hell: #e4f3e8;
+  --falsch: #a8261b;
+  --falsch-hell: #fbe9e7;
+  --teilweise: #7a4f00;
+  --teilweise-hell: #fdf1d6;
+
+  --ampel-gruen: #2f855a;
+  --ampel-gelb: #d69e2e;
+  --ampel-rot: #c53030;
+
+  --radius: 16px;
+  --abstand: 16px;
+  --schatten: 0 2px 8px rgba(31, 41, 51, 0.08);
+  --touch: 56px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--hintergrund);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.25rem;          /* 20px */
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] { display: none !important; }
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: var(--abstand) var(--abstand) 48px;
+}
+
+h1 { font-size: 2.1rem; line-height: 1.2; margin: 8px 0 12px; }
+h2, .frage { font-size: 1.6rem; line-height: 1.3; margin: 0 0 16px; }
+h1:focus, h2:focus { outline: none; }
+
+.fliesstext { margin: 0 0 16px; white-space: pre-line; }
+.hinweis { color: var(--text-leise); font-size: 1.05rem; margin: 0 0 16px; }
+
+/* ---------- Kopfzeile ---------- */
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--flaeche);
+  border-bottom: 1px solid var(--rand);
+  padding: 8px var(--abstand);
+  padding-top: max(8px, env(safe-area-inset-top));
+}
+.kopf-zeile {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.kopf-titel { font-weight: 700; flex: 1 1 auto; min-width: 0; }
+.kopf-name {
+  background: var(--primaer-hell);
+  color: var(--primaer-dunkel);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fortschritt {
+  max-width: 920px;
+  margin: 6px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.fortschritt-text { font-size: 1rem; color: var(--text-leise); white-space: nowrap; }
+.fortschritt-balken {
+  flex: 1;
+  height: 12px;
+  background: #ebe6da;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.fortschritt-fuellung { height: 100%; background: var(--primaer); border-radius: 999px; }
+
+/* ---------- Karten / Seiten ---------- */
+.karte {
+  background: var(--flaeche);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+  padding: 24px;
+  margin-top: 8px;
+}
+@media (max-width: 500px) {
+  .karte { padding: 18px 16px; }
+  h1 { font-size: 1.8rem; }
+  h2, .frage { font-size: 1.4rem; }
+}
+
+/* ---------- Knöpfe ---------- */
+.knopf {
+  font: inherit;
+  font-weight: 600;
+  min-height: var(--touch);
+  padding: 10px 28px;
+  border-radius: 999px;
+  border: 2px solid var(--primaer);
+  background: var(--flaeche);
+  color: var(--primaer);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.knopf.haupt { background: var(--primaer); color: #fff; }
+.knopf.haupt:active { background: var(--primaer-dunkel); }
+.knopf.klein { min-height: 48px; padding: 6px 18px; font-size: 1rem; }
+.knopf.leise { border-color: transparent; background: transparent; text-decoration: underline; font-weight: 500; }
+.knopf.warnung { border-color: var(--falsch); color: var(--falsch); }
+
+:focus-visible { outline: 4px solid #f2b705; outline-offset: 3px; }
+
+.fuss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.fuss-mitte { justify-content: center; }
+.fuss .knopf.haupt { min-width: 180px; }
+
+/* ---------- Start ---------- */
+.start { max-width: 600px; margin: 24px auto 0; }
+.start .knopf.haupt { width: 100%; margin-top: 8px; }
+.marke { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid #e3e8f0; }
+.marke-logo { width: 92px; height: auto; flex: none; }
+.marke-text { display: flex; flex-direction: column; gap: 2px; }
+.marke-name { font-size: 2.1rem; font-weight: 800; letter-spacing: 0.01em; line-height: 1.1; color: #1f4e8c; }
+/* „Bit“ in Computerschrift; dunkleres Türkis als im Logo, damit der Kontrast reicht */
+.marke-bit { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 700; color: #127a87; }
+.marke-unterzeile { font-size: 1.05rem; font-weight: 600; color: #4a5568; }
+.label { display: block; font-weight: 700; margin: 8px 0 8px; }
+.datenschutz {
+  margin: 20px 0 0;
+  padding: 12px 16px;
+  background: var(--primaer-hell);
+  border-radius: 12px;
+  font-size: 1.05rem;
+}
+
+.eingabe {
+  font: inherit;
+  font-size: 1.4rem;
+  width: 100%;
+  min-height: var(--touch);
+  padding: 10px 16px;
+  border: 2px solid var(--rand);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.eingabe:focus { border-color: var(--primaer); outline: none; box-shadow: 0 0 0 3px var(--primaer-hell); }
+.eingabe.ist-richtig { border-color: var(--richtig); background: var(--richtig-hell); }
+.eingabe.ist-falsch { border-color: var(--falsch); background: var(--falsch-hell); }
+.marke-zeile { font-weight: 700; margin: 4px 0 0; }
+.marke-zeile.ist-richtig { color: var(--richtig); }
+.marke-zeile.ist-falsch { color: var(--falsch); }
+
+.hinweis-pruefen { color: var(--teilweise); font-weight: 600; margin: 12px 0 0; min-height: 0; }
+.hinweis-pruefen:empty { display: none; }
+
+/* ---------- Blattauswahl ---------- */
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--abstand);
+  margin-top: 8px;
+}
+.kachel {
+  font: inherit;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 150px;
+  padding: 20px;
+  background: var(--flaeche);
+  border: 2px solid var(--rand);
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.kachel:active { border-color: var(--primaer); background: var(--primaer-hell); }
+.kachel-nummer { font-size: 0.95rem; font-weight: 700; color: var(--primaer); text-transform: uppercase; letter-spacing: 0.04em; }
+.kachel-titel { font-size: 1.4rem; font-weight: 700; line-height: 1.25; }
+.kachel-text { color: var(--text-leise); font-size: 1.05rem; }
+.kachel-info { margin-top: auto; font-size: 1rem; color: var(--text-leise); }
+
+/* Fortschritt auf der Kachel (nur aktuelle Sitzung) */
+.kachel-stand { margin-top: auto; display: flex; flex-direction: column; gap: 6px; }
+.kachel-stand-text { font-size: 1rem; font-weight: 600; color: var(--primaer-dunkel); }
+.kachel-stand.ist-fertig .kachel-stand-text { color: var(--richtig); }
+.kachel-balken { display: block; height: 8px; border-radius: 999px; background: var(--primaer-hell); overflow: hidden; }
+.kachel-balken-fuellung { display: block; height: 100%; border-radius: 999px; background: var(--primaer); }
+.kachel-stand.ist-fertig .kachel-balken-fuellung { background: var(--richtig); }
+
+/* ---------- Bilder ---------- */
+.abbildung { margin: 0 0 20px; }
+.bild {
+  display: block;
+  max-width: 100%;
+  max-height: 45vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto;
+}
+.bildquelle { font-size: 0.9rem; color: var(--text-leise); text-align: center; margin-top: 6px; }
+.bild-fehlt {
+  padding: 32px;
+  border: 2px dashed var(--falsch);
+  border-radius: 12px;
+  color: var(--falsch);
+  text-align: center;
+}
+
+/* ---------- Info ---------- */
+.stichpunkte { margin: 0; padding-left: 1.3em; }
+.stichpunkte li { margin-bottom: 12px; }
+.stichpunkte li::marker { color: var(--primaer); }
+
+/* ---------- Antwort-Optionen (MC, Wahr/Falsch) ---------- */
+.optionen { display: flex; flex-direction: column; gap: 12px; }
+.optionen-nebeneinander { flex-direction: row; flex-wrap: wrap; }
+.optionen-nebeneinander .option { flex: 1 1 200px; justify-content: center; text-align: center; }
+.option {
+  font: inherit;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-height: var(--touch);
+  padding: 14px 20px 14px 56px;
+  position: relative;
+  background: var(--flaeche);
+  border: 2px solid var(--rand);
+  border-radius: 14px;
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.optionen-nebeneinander .option { align-items: center; padding-left: 56px; padding-right: 56px; }
+.option::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  border: 2px solid var(--text-leise);
+  border-radius: 50%;
+  background: #fff;
+}
+.option[role="checkbox"]::before { border-radius: 6px; }
+.option[aria-checked="true"] { border-color: var(--primaer); background: var(--primaer-hell); }
+.option[aria-checked="true"]::before {
+  border-color: var(--primaer);
+  background: var(--primaer);
+  box-shadow: inset 0 0 0 4px #fff;
+}
+.option:disabled { cursor: default; color: var(--text); opacity: 1; }
+.option.ist-richtig { border-color: var(--richtig); background: var(--richtig-hell); }
+.option.ist-falsch { border-color: var(--falsch); background: var(--falsch-hell); }
+.marke { font-size: 1rem; font-weight: 700; }
+.ist-richtig > .marke { color: var(--richtig); }
+.ist-falsch > .marke { color: var(--falsch); }
+
+.aussage {
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  background: var(--primaer-hell);
+  border-radius: 14px;
+}
+
+/* ---------- Zuordnen ---------- */
+.ablage {
+  min-height: 80px;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 2px dashed var(--rand);
+  border-radius: 14px;
+  background: #faf8f3;
+}
+.ablage-leer { display: none; margin: 8px; color: var(--text-leise); font-size: 1.05rem; }
+.ablage.ist-leer .ablage-leer { display: block; }
+.ablage.bereit, .ablage.drueber { border-color: var(--primaer); background: var(--primaer-hell); }
+
+.zone-karten { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.zonen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.zone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 160px;
+  padding: 10px;
+  border: 2px solid var(--rand);
+  border-radius: 14px;
+  background: #fff;
+}
+.zone .zone-karten { flex-direction: column; flex: 1; }
+.zone-kopf {
+  font: inherit;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 8px 12px;
+  text-align: left;
+  border: 0;
+  border-radius: 10px;
+  background: #f1eee6;
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.zone-punkt { display: none; width: 22px; height: 22px; border-radius: 50%; flex: none; }
+.zonen.bereit .zone { border-style: dashed; border-color: var(--primaer); cursor: pointer; }
+.zonen.bereit .zone-kopf::after { content: " ← hier ablegen"; font-weight: 500; color: var(--primaer); font-size: 0.95rem; }
+.zone.drueber { background: var(--primaer-hell); border-color: var(--primaer); }
+.zonen.gesperrt .zone { border-style: solid; border-color: var(--rand); cursor: default; }
+
+/* Ampel-Stil */
+.ampel .zone-punkt { display: inline-block; }
+.ampel .zone { padding-top: 18px; }
+.ampel .zone-0 { box-shadow: inset 0 8px 0 var(--ampel-gruen); }
+.ampel .zone-1 { box-shadow: inset 0 8px 0 var(--ampel-gelb); }
+.ampel .zone-2 { box-shadow: inset 0 8px 0 var(--ampel-rot); }
+.ampel .zone-0 .zone-punkt { background: var(--ampel-gruen); }
+.ampel .zone-1 .zone-punkt { background: var(--ampel-gelb); }
+.ampel .zone-2 .zone-punkt { background: var(--ampel-rot); }
+
+.spielkarte-text { display: block; }
+button.spielkarte {
+  font: inherit;
+  font-size: 1.1rem;
+  text-align: left;
+  min-height: var(--touch);
+  padding: 12px 16px;
+  background: #fff;
+  border: 2px solid #b9b2a1;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 #d9d3c4;
+  color: var(--text);
+  cursor: grab;
+  touch-action: none;           /* nötig fürs Ziehen per Finger */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  margin: 0;
+  max-width: 100%;
+}
+.ablage button.spielkarte { flex: 0 1 auto; }
+button.spielkarte[aria-pressed="true"] {
+  border-color: var(--primaer);
+  background: var(--primaer-hell);
+  box-shadow: 0 0 0 3px var(--primaer);
+}
+button.spielkarte.wird-gezogen { opacity: 0.35; }
+button.spielkarte:disabled { cursor: default; color: var(--text); opacity: 1; }
+button.spielkarte.ist-richtig { border-color: var(--richtig); background: var(--richtig-hell); box-shadow: none; }
+button.spielkarte.ist-falsch { border-color: var(--falsch); background: var(--falsch-hell); box-shadow: none; }
+button.spielkarte .marke { display: block; margin-top: 4px; }
+button.spielkarte .karten-hinweis {
+  display: block;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--flaeche);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.spielkarte-geist {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  margin: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+  border-color: var(--primaer) !important;
+}
+
+/* ---------- Rückmeldung ---------- */
+.rueckmeldung {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border-left: 8px solid;
+}
+.rueckmeldung-titel { font-weight: 700; font-size: 1.3rem; margin: 0 0 6px; }
+.rueckmeldung-text { margin: 0; }
+.rueckmeldung-richtig { background: var(--richtig-hell); border-color: var(--richtig); }
+.rueckmeldung-richtig .rueckmeldung-titel { color: var(--richtig); }
+.rueckmeldung-teilweise { background: var(--teilweise-hell); border-color: var(--teilweise); }
+.rueckmeldung-teilweise .rueckmeldung-titel { color: var(--teilweise); }
+.rueckmeldung-falsch { background: var(--falsch-hell); border-color: var(--falsch); }
+.rueckmeldung-falsch .rueckmeldung-titel { color: var(--falsch); }
+
+/* ---------- Ergebnis ---------- */
+.ergebnis { text-align: center; padding: 40px 24px; }
+.ergebnis-satz { font-size: 1.6rem; font-weight: 700; margin: 8px 0 12px; }
+
+/* ---------- Entwicklungsbanner (Validierung) ---------- */
+.dev-banner {
+  background: #fff4d6;
+  border-bottom: 4px solid var(--teilweise);
+  color: var(--text);
+  padding: 12px var(--abstand);
+  font-size: 1rem;
+  line-height: 1.4;
+  max-height: 40vh;
+  overflow: auto;
+}
+.dev-banner.hat-fehler { background: #fde8e6; border-bottom-color: var(--falsch); }
+.dev-banner ul { margin: 8px 0; padding-left: 1.3em; }
+.dev-banner .meldung-fehler { color: var(--falsch); font-weight: 600; }
+.banner-zu {
+  font: inherit;
+  min-height: 44px;
+  padding: 6px 16px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- Ja/Nein-Liste ---------- */
+.jn-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.jn-zeile {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid var(--rand);
+  border-radius: 16px;
+  background: #fff;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.jn-nummer {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--primaer-hell);
+  color: var(--primaer-dunkel);
+  font-weight: 700;
+}
+.jn-inhalt { flex: 1; min-width: 0; }
+.jn-text { margin: 4px 0 12px; font-size: 1.2rem; font-weight: 500; }
+.jn-knoepfe { display: flex; gap: 10px; }
+.jn-knopf {
+  font: inherit;
+  font-weight: 700;
+  flex: 1 1 0;
+  max-width: 160px;
+  min-height: 52px;
+  padding: 8px 18px;
+  border: 2px solid #b9b2a1;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.jn-knopf[aria-checked="true"] { background: var(--primaer); border-color: var(--primaer); color: #fff; }
+.jn-knopf:disabled { cursor: default; }
+.jn-knopf:disabled[aria-checked="false"] { opacity: 0.45; }
+
+/* Querformat / breite Bildschirme: Satz links, Knöpfe rechts */
+@media (min-width: 700px) {
+  .jn-inhalt { display: grid; grid-template-columns: 1fr auto; column-gap: 20px; align-items: center; }
+  .jn-text { margin: 0; }
+  .jn-knoepfe .jn-knopf { min-width: 110px; }
+  .jn-ergebnis, .jn-erklaerung { grid-column: 1 / -1; }
+  .jn-zeile { align-items: center; }
+  .jn-zeile.ist-richtig, .jn-zeile.ist-falsch { align-items: flex-start; }
+}
+
+.jn-zeile.beantwortet { border-color: #b7cde3; }
+.jn-zeile.offen { border-color: var(--teilweise); background: var(--teilweise-hell); }
+.jn-zeile.ist-richtig { border-color: var(--richtig); background: var(--richtig-hell); }
+.jn-zeile.ist-falsch { border-color: var(--falsch); background: var(--falsch-hell); }
+.jn-zeile.ist-richtig .jn-nummer { background: var(--richtig); color: #fff; }
+.jn-zeile.ist-falsch .jn-nummer { background: var(--falsch); color: #fff; }
+.ist-richtig .jn-knopf[aria-checked="true"] { background: var(--richtig); border-color: var(--richtig); }
+.ist-falsch .jn-knopf[aria-checked="true"] { background: var(--falsch); border-color: var(--falsch); }
+
+.jn-ergebnis { font-weight: 700; margin: 12px 0 4px; }
+.ist-richtig .jn-ergebnis { color: var(--richtig); }
+.ist-falsch .jn-ergebnis { color: var(--falsch); }
+.jn-erklaerung { margin: 0; font-size: 1.05rem; color: var(--text-leise); }
+/* Bei falschen Antworten die Erklärung deutlich hervorheben */
+.ist-falsch .jn-erklaerung {
+  color: var(--text);
+  font-size: 1.1rem;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 6px;
+}
+
+/* ---------- Quiz: mehrere Aufgaben untereinander ---------- */
+.quiz-teil {
+  display: flex;
+  gap: 14px;
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  border: 2px solid var(--rand);
+  border-radius: 16px;
+  background: #fff;
+}
+.quiz-nummer {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background: var(--primaer-hell);
+  color: var(--primaer-dunkel);
+}
+.quiz-inhalt { flex: 1; min-width: 0; }
+.quiz-frage { font-size: 1.3rem; margin: 4px 0 12px; }
+.quiz-teil .aussage { font-size: 1.25rem; margin-bottom: 14px; }
+.quiz-teil .optionen { margin-bottom: 0; }
+.quiz-teil.offen { border-color: var(--teilweise); background: var(--teilweise-hell); }
+.quiz-teil.ist-richtig { border-color: var(--richtig); }
+.quiz-teil.ist-falsch { border-color: var(--falsch); }
+.quiz-teil.ist-richtig .quiz-nummer { background: var(--richtig); color: #fff; }
+.quiz-teil.ist-falsch .quiz-nummer { background: var(--falsch); color: #fff; }
+.quiz-erklaerung { margin: 12px 0 0; font-size: 1.05rem; color: var(--text-leise); }
+.quiz-teil.ist-falsch .quiz-erklaerung {
+  color: var(--text);
+  font-size: 1.1rem;
+  background: var(--falsch-hell);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+@media (max-width: 560px) {
+  .quiz-teil { padding: 14px 12px; gap: 10px; }
+  .quiz-nummer { width: 30px; height: 30px; }
+}
+
+/* Bild auf Aufgabenseiten kleiner halten (Erinnerung, nicht Hauptsache) */
+.seite-ja-nein .bild, .seite-zuordnen .bild { max-height: 24vh; }
+
+/* ---------- Hervorgehobener Kasten auf Erklärseiten (z. B. eine Abmachung) ---------- */
+.info-kasten {
+  margin: 4px 0 16px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  border: 3px solid var(--primaer);
+  background: var(--primaer-hell);
+  font-size: 1.3rem;
+  font-weight: 600;
+  white-space: pre-line;
+}
+
+/* ---------- Großer Merkkasten: Begriff → Merksatz (info: merksatz) ---------- */
+/* Merkzettel: schlanker gelber Streifen, volle Breite wie der Text */
+.merksatz {
+  margin: 14px 0 18px;
+  padding: 12px 18px 14px;
+  border-left: 5px solid #e0a800;
+  border-radius: 10px;
+  background: #fff8db;
+}
+.merksatz-kopf {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.merksatz-symbol { font-size: 1rem; line-height: 1; }
+.merksatz-begriff {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b5200;               /* Kontrast zu #fff8db ≈ 7:1 */
+}
+.merksatz-text {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+@media (max-width: 560px) {
+  .merksatz-text { font-size: 1.2rem; }
+}
+
+/* ---------- Entwicklungshilfe (EE.KONFIG.entwicklung) ---------- */
+.dev-ueberspringen {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 2px dashed #d9a400;
+  text-align: left;
+}
+.dev-knopf {
+  border: 2px dashed #b07d00;
+  color: #6b4c00;
+  background: #fff8e1;
+}
+
+/* Grün/Rot-Stil für zwei Gruppen (z. B. „Erlaubt“ / „Nicht erlaubt“) */
+.gruen-rot .zone-punkt { display: inline-block; }
+.gruen-rot .zone { padding-top: 18px; }
+.gruen-rot .zone-0 { box-shadow: inset 0 8px 0 var(--ampel-gruen); }
+.gruen-rot .zone-1 { box-shadow: inset 0 8px 0 var(--ampel-rot); }
+.gruen-rot .zone-0 .zone-punkt { background: var(--ampel-gruen); }
+.gruen-rot .zone-1 .zone-punkt { background: var(--ampel-rot); }
+.gruen-rot .zone-kopf { font-size: 1.3rem; }
+
+/* Sprungleiste im Kopf (EE.KONFIG.entwicklung) */
+.dev-sprungleiste {
+  max-width: 920px;
+  margin: 8px auto 0;
+  padding: 6px 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #fff8e1;
+  border: 2px dashed #b07d00;
+  border-radius: 10px;
+}
+.dev-sprung-label { font-size: 0.9rem; font-weight: 700; color: #6b4c00; flex: none; }
+.dev-sprung {
+  flex: none;
+  font: inherit;
+  font-size: 0.9rem;
+  min-height: 40px;
+  padding: 4px 10px;
+  border: 1px solid #b07d00;
+  border-radius: 8px;
+  background: #fff;
+  color: #4a3500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dev-sprung.ist-beantwortet { background: #e4f3e8; }
+.dev-sprung.ist-aktuell { background: #6b4c00; color: #fff; font-weight: 700; }
+
+/* ---------- Tipps zur Lektion (Knopf im Kopf + Fenster) ---------- */
+.tipps-knopf { border-color: #b07d00; color: #6b4c00; background: #fff8e1; }
+
+.tipps-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(31, 41, 51, 0.45);
+}
+.tipps-fenster {
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  overflow: auto;
+  background: var(--flaeche);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  padding: 24px;
+}
+.tipps-titel { margin: 0 0 4px; }
+.tipps-lektion { margin: 0 0 16px; color: var(--text-leise); font-weight: 600; }
+.tipps-liste { margin: 0; padding-left: 1.3em; font-size: 1.2rem; }
+.tipps-liste li { margin-bottom: 12px; }
+.tipps-liste li::marker { color: #b07d00; }
+.tipps-fenster .tipps-liste { font-weight: 500; }
+
+/* Tipps als Kasten auf einer Erklärseite (tippsAnzeigen: true) */
+.tipps-kasten { border-color: #b07d00; background: #fff8e1; font-size: 1.15rem; }
+.tipps-kasten .tipps-liste { font-size: inherit; }
+.tipps-kasten .tipps-liste li:last-child { margin-bottom: 0; }
+
+/* ---------- Abschnitte auf Erklärseiten (info.abschnitte) ---------- */
+.abschnitte { display: flex; flex-direction: column; gap: 14px; margin: 4px 0 16px; }
+.abschnitt {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border-left: 8px solid;
+}
+.abschnitt-symbol { font-size: 2.2rem; line-height: 1; flex: none; width: 2.6rem; text-align: center; }
+.abschnitt-inhalt { flex: 1; min-width: 0; }
+.abschnitt-titel { font-size: 1.3rem; margin: 2px 0 6px; }
+.abschnitt-text { margin: 0; white-space: pre-line; }
+.abschnitt-blau { background: var(--primaer-hell); border-color: var(--primaer); }
+.abschnitt-gruen { background: var(--richtig-hell); border-color: var(--richtig); }
+.abschnitt-gelb { background: #fff8e1; border-color: #b07d00; }
+.abschnitt-rot { background: var(--falsch-hell); border-color: var(--falsch); }
