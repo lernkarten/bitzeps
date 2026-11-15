@@ -757,3 +757,13 @@ button.spielkarte .karten-hinweis {
 .abschnitt-gruen { background: var(--richtig-hell); border-color: var(--richtig); }
 .abschnitt-gelb { background: #fff8e1; border-color: #b07d00; }
 .abschnitt-rot { background: var(--falsch-hell); border-color: var(--falsch); }
+
+/* ---------- Fußzeile, Impressum, Datenschutz ---------- */
+.seiten-fuss, .rechtliches-fuss { text-align: center; font-size: 0.95rem; color: var(--text-leise); margin: 28px 16px 24px; }
+.seiten-fuss a, .rechtliches-fuss a { color: var(--text-leise); padding: 8px 4px; display: inline-block; }
+.rechtliches { max-width: 760px; margin: 0 auto; padding: 20px 16px; }
+.rechtliches .karte { margin-top: 16px; }
+.rechtliches h2 { font-size: 1.2rem; margin: 24px 0 6px; }
+.rechtliches p { margin: 6px 0; }
+.rechtliches a.knopf { text-decoration: none; display: inline-flex; align-items: center; }
+.rechtliches-stand { color: var(--text-leise); font-size: 0.95rem; margin-top: 18px !important; }
