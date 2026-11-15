@@ -6,7 +6,7 @@
  * TODO Lehrkraft prüfen: Intro-Text und Tipps (Entwurf, gemeinsam überarbeiten);
  * Ampel-Zuordnung im Café.
  *
- * Bild: vorläufig aus der Folie ausgeschnitten (Freepik-Original wäre besser).
+ * Bild: vorläufig aus der Folie ausgeschnitten (Quelle: Magnific; Original in besserer Auflösung wäre besser).
  */
 registerBlatt({
   id: "fotos-fremde-menschen",
@@ -42,7 +42,7 @@ registerBlatt({
       titel: "Im Café",
       text: "Du bist mit deiner Familie im Café. Die Verkäuferin macht gerade einen Kaffee mit Milchschaum. Das sieht toll aus! Du möchtest ein Foto machen.\nDie Verkäuferin kennst du nicht. Sie ist eine fremde Person.",
       bild: "bilder/cafe-verkaeuferin.jpg",
-      bildQuelle: "Designed by Freepik"
+      bildQuelle: "Designed by Magnific"
     },
 
     // 3. Zuordnung. „Fotografieren ohne fragen“ = grün (Absprache Lehrkraft 13.11.2026),
@@ -51,7 +51,7 @@ registerBlatt({
       typ: "zuordnen", thema: "Fotos von Fremden", stufe: 1, stil: "ampel",
       anweisung: "Foto von der Verkäuferin: Was ist in Ordnung? Zieh jede Karte in das passende Feld.",
       bild: "bilder/cafe-verkaeuferin.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       gruppen: ["Grün: In Ordnung", "Gelb: Nur, wenn die Verkäuferin dazu Ja sagt", "Rot: Nicht in Ordnung"],
       karten: [
         { text: "Ich fotografiere nur den Kaffee. Die Verkäuferin ist nicht auf dem Foto.", gruppe: 0 },

@@ -15,7 +15,7 @@
  *
  * TODO Lehrkraft prüfen: Einstiegsfragen (Seite 3–4).
  *
- * Bild: vorläufig aus der Folie ausgeschnitten (Freepik-Original wäre besser).
+ * Bild: vorläufig aus der Folie ausgeschnitten (Quelle: Magnific; Original in besserer Auflösung wäre besser).
  */
 registerBlatt({
   id: "fotos-auf-dem-jahrmarkt",
@@ -52,7 +52,7 @@ registerBlatt({
       titel: "Auf dem Jahrmarkt",
       text: "Du bist abends auf dem Jahrmarkt. Das Riesenrad leuchtet bunt. Das sieht toll aus! Du machst ein Foto davon.\nAuf dem Foto sind auch viele Menschen zu sehen.",
       bild: "bilder/jahrmarkt-riesenrad.jpg",
-      bildQuelle: "Designed by Freepik"
+      bildQuelle: "Designed by Magnific"
     },
 
     // 3.–4. Einstieg: einfache Fragen zum Bild
@@ -60,7 +60,7 @@ registerBlatt({
       typ: "multiple-choice", thema: "Menschen im Hintergrund", stufe: 1,
       frage: "Was ist das Wichtigste auf diesem Foto?",
       bild: "bilder/jahrmarkt-riesenrad.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       optionen: [
         "Das Riesenrad",
         "Die Frau vorne links",
@@ -74,7 +74,7 @@ registerBlatt({
       typ: "wahr-falsch", thema: "Menschen im Hintergrund", stufe: 1,
       aussage: "Auf dem Foto kann man die Gesichter der Menschen gut erkennen.",
       bild: "bilder/jahrmarkt-riesenrad.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       richtig: false,
       erklaerung: "Die Menschen sind klein, weit weg oder von hinten zu sehen. Man erkennt sie kaum."
     },
@@ -85,7 +85,7 @@ registerBlatt({
       typ: "zuordnen", thema: "Menschen im Hintergrund", stufe: 2, stil: "gruen-rot",
       anweisung: "Das ist dein Foto vom Jahrmarkt. Was stimmt? Zieh jede Karte in das passende Feld.",
       bild: "bilder/jahrmarkt-riesenrad.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       gruppen: ["Stimmt", "Stimmt nicht"],
       karten: [
         { text: "Ich darf das Riesenrad fotografieren, auch wenn Menschen mit auf dem Foto sind.", gruppe: 0 },

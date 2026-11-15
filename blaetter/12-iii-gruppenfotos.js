@@ -8,7 +8,7 @@
  *   Ziel: Ein Ja gilt nur für das, wozu man Ja gesagt hat.
  * TODO Lehrkraft prüfen: Intro-Text und Tipps (Entwurf), Ja/Nein-Lösungen.
  *
- * Bild: vorläufig aus der Folie ausgeschnitten (Freepik-Original wäre besser).
+ * Bild: vorläufig aus der Folie ausgeschnitten (Quelle: Magnific; Original in besserer Auflösung wäre besser).
  */
 registerBlatt({
   id: "fotos-gruppenfotos",
@@ -45,7 +45,7 @@ registerBlatt({
       titel: "Ein Gruppenfoto auf der Feier",
       text: "Du bist auf einer Geburtstagsfeier. Jemand macht ein Gruppenfoto von allen Kindern. Du bist auch auf dem Foto.",
       bild: "bilder/geburtstag-gruppenfoto.jpg",
-      bildQuelle: "Designed by Freepik"
+      bildQuelle: "Designed by Magnific"
     },
 
     // 3. Noch nichts abgemacht
@@ -53,7 +53,7 @@ registerBlatt({
       typ: "ja-nein", thema: "Gruppenfotos", stufe: 2,
       frage: "Gruppenfoto auf der Feier: Ist das in Ordnung?",
       bild: "bilder/geburtstag-gruppenfoto.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       aussagen: [
         { text: "Jemand macht auf der Feier ein Gruppenfoto von allen Kindern.", richtig: true,
           erklaerung: "Ein Foto machen ist meistens in Ordnung. Wenn du nicht aufs Foto willst, darfst du das sagen." },

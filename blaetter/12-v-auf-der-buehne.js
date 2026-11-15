@@ -6,7 +6,7 @@
  * Einführungstext mit der Lehrkraft abgestimmt (13.11.2026).
  *
  * TODO Lehrkraft prüfen: Konzert-Aufgabe (erster Wurf), Tipps (Entwurf).
- * Bild: vorläufig aus der Folie ausgeschnitten (Freepik-Original in besserer Auflösung wäre besser).
+ * Bild: vorläufig aus der Folie ausgeschnitten (Quelle: Magnific; Original in besserer Auflösung wäre besser).
  */
 registerBlatt({
   id: "fotos-auf-der-buehne",
@@ -41,7 +41,7 @@ registerBlatt({
       titel: "Beim Konzert",
       text: "Du bist auf dem Konzert von Lina und ihrer Band. Die Band ist in ganz Deutschland bekannt. Lina ist deine Lieblingssängerin!\n",
       bild: "bilder/konzert.jpg",
-      bildQuelle: "Designed by Freepik"
+      bildQuelle: "Designed by Magnific"
     },
 
     // 3. Was darf ich mit dem Konzertfoto machen?
@@ -50,7 +50,7 @@ registerBlatt({
       frage: "Foto vom Konzert: Ist das in Ordnung?",
       antworten: ["In Ordnung", "Nicht in Ordnung"],
       bild: "bilder/konzert.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       aussagen: [
         { text: "Ich fotografiere Lina und die Band auf der Bühne.", richtig: true,
           erklaerung: "Auf der Bühne zeigt sich Lina freiwillig. Fotografieren gehört beim Konzert dazu." },

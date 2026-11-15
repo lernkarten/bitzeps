@@ -7,7 +7,7 @@
  * Verschicken/Veröffentlichen nur, wenn alle auf dem Foto Ja sagen.
  * TODO Lehrkraft prüfen: Intro-Text und Tipps (Entwurf, gemeinsam überarbeiten).
  *
- * Bild: vorläufig aus der Folie ausgeschnitten (Freepik-Original wäre besser).
+ * Bild: vorläufig aus der Folie ausgeschnitten (Quelle: Magnific; Original in besserer Auflösung wäre besser).
  */
 registerBlatt({
   id: "fotos-menschen-die-ich-kenne",
@@ -45,7 +45,7 @@ registerBlatt({
       titel: "Du machst ein Foto …",
       text: "Du machst ein Bild von deiner Schwester und deinem Papa. Was darfst du damit machen?",
       bild: "bilder/schwester-papa.jpg",
-      bildQuelle: "Designed by Freepik"
+      bildQuelle: "Designed by Magnific"
     },
 
     // 3.–6. Aufgaben
@@ -53,7 +53,7 @@ registerBlatt({
       typ: "ja-nein", thema: "Recht am eigenen Bild", stufe: 1,
       frage: "Foto von Schwester und Papa: Ist das in Ordnung?",
       bild: "bilder/schwester-papa.jpg",
-      bildQuelle: "Designed by Freepik",
+      bildQuelle: "Designed by Magnific",
       aussagen: [
         { text: "Ich fotografiere die beiden, ohne zu fragen.", richtig: true,
           erklaerung: "Fotos von deiner Familie machst du oft einfach so. Das ist okay." },
